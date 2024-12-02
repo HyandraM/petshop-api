@@ -31,20 +31,20 @@ app.post('/user', async(req, res) => {
     return res.send(user)
 })
 
-app.put("/id", async(req, res) => {
+app.put("/user/:id", async(req, res) => {
     const user = await User.findByIdAndUpdate(req.params.id, {
         name : req.body.name,
         email : req.body.email,
         telefone : req.body.telefone,
         cpf : req.body.cpf,
         senha : req.body.senha
+    }, {
+        new : true
     })
     return res.send(user)
-}, {
-    new : true
 })
 
-app.delete("/:id", async(req, res) => {
+app.delete("/user/:id", async(req, res) => {
     const user = await User.findByIdAndDelete(req.params.id)
     return res.send(user)
 })
