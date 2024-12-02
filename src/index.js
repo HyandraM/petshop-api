@@ -50,6 +50,6 @@ app.delete("/:id", async(req, res) => {
 })
 
 app.listen(port, () => {
-    mongoose.connect('conexão');
+    mongoose.connect('mongodb+srv://Hyandra:123456oi@ifpets.aglme.mongodb.net/?retryWrites=true&w=majority&appName=IfPets');
     console.log('petshop-api rodando...')
 })
