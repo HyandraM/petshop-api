@@ -50,6 +50,6 @@ app.delete("/:id", async(req, res) => {
 })
 
 app.listen(port, () => {
-    mongoose.connect('adicione a conexão por favor');
+    mongoose.connect('conexão');
     console.log('petshop-api rodando...')
 })
