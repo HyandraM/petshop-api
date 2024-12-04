@@ -13,6 +13,8 @@ const adressSchema = new Schema({
         complemento : String, 
     },    
 );
-const User = mongoose.model('Adress', adressSchema);
+const Adress = mongoose.model('Adress', adressSchema);
 module.exports = Adress;
+
+
 
