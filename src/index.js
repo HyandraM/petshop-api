@@ -56,16 +56,16 @@ app.put("/servico/:id", servicoController.updateServico);
 
 // Filtro - Serviços
 /* URL = /servico/buscarservico/?categoriaServico=vacinacao*/
-/* URL = /servico/buscarservico/?categoriaServico=banho_tossa*/
+/* URL = /servico/buscarservico/?categoriaServico=banho_tosa*/
 /* URL = /servico/buscarservico/?categoriaServico=adestramento*/
 app.get("/servico/buscarservico/", servicoController.indexServico);
 
 // Filtro Duplo - Serviços
 /* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&?tipoServico=cachorro*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tossa&?tipoServico=cachorro*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&?tipoServico=cachorro*/
 /* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&?tipoServico=cachorro*/
 /* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&?tipoServico=gato*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tossa&?tipoServico=gato*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&?tipoServico=gato*/
 /* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&?tipoServico=gato*/
 app.get("/servico/buscarservico-duplo", servicoController.indexServicoDuplo);
 
