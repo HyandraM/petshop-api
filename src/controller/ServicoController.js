@@ -27,13 +27,13 @@ module.exports = {
     /* Filtro */
     async indexServico(req, res){
         let servico = await Servico.find(
-        {tipoServico: req.query.tipoServico})
+        {categoriaServico: req.query.categoriaServico})
         return res.json(servico);
     },
 
     /* Filtro Duplo */
     async indexServicoDuplo(req, res){
-        let servico = await Produto.find({
+        let servico = await Servico.find({
             tipoServico: req.query.tipoServico,
             categoriaServico: req.query.categoriaServico
         });

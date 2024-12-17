@@ -8,9 +8,9 @@ const ServicoSchema = new mongoose.Schema({
     dataServico: Date,
     horaServico: String,
     _idUser: {
-        type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-    },
+    }
 });
 
 module.exports = mongoose.model("Servico", ServicoSchema);

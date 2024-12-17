@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const{ Schema } = mongoose;
 
-const adressSchema = new Schema({
+const enderecoSchema = new Schema({
         endereco : String ,
         _idUser: {
-            type: mongoose.Schema.Types.ObjectId, 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User", 
             required: true
         },
         estado:  String,
@@ -13,8 +14,8 @@ const adressSchema = new Schema({
         complemento : String, 
     },    
 );
-const Adress = mongoose.model('Adress', adressSchema);
-module.exports = Adress;
+const Endereco = mongoose.model('Endereco', enderecoSchema);
+module.exports = Endereco;
 
 
 

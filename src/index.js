@@ -2,9 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const userController = require("./controller/userController");
-const adressController = require("./controller/adressController");
+const enderecoController = require("./controller/EnderecoController");
 const produtoController = require("./controller/ProdutoController");
 const servicoController = require("./controller/ServicoController");
+const adestrarController = require("./controller/adestrarController");
+const banhotosaController = require("./controller/banhotosaController");
+const consultavacinaController = require("./controller/consultavacinaController");
 
 const app = express();
 const port = 3000;
@@ -18,11 +21,41 @@ app.get("/user", userController.show);
 app.put("/user/:id", userController.update);
 app.delete("/user/:id", userController.destroy);
 
-//rotas para Adress
-app.post("/user/adress", adressController.store);
-app.get("/user/adress", adressController.show);
-app.put("/user/adress", adressController.update);
-app.delete("/user/adress/:id", adressController.destroy);
+//filtro - user 
+app.get("/user/id", userController.indexUserId);
+app.get("/user/email", userController.indexUserEmail);
+app.get("/user/telefone", userController.indexUserTelefone);
+app.get("/user/nome", userController.indexUserNome);
+app.get("/user/nome/telefone", userController.indexUserDuplo);
+
+/*URL = /user/email/?email=Merida@gmail.com*/
+/*URL = /user/id/?id=674f49e91d2ffdb0da633937*/
+/*URL = /user/telefone?telefone=1234-12311*/
+/*URL = /user/nome?name=Merida*/
+
+//rotas para endereco
+app.post("/user/endereco", enderecoController.store);
+app.get("/user/endereco", enderecoController.show);
+app.put("/user/endereco", enderecoController.update);
+app.delete("/user/endereco/:id", enderecoController.destroy);
+
+//rota para Agendar Adestramento
+app.post("/user/agendar/adestramento", adestrarController.store);
+app.get("/user/agendar/adestramento", adestrarController.show);
+app.put("/user/agendar/adestramento", adestrarController.update);
+app.delete("/user/agendar/adestramento/:id", adestrarController.destroy);
+
+//rota para Agendar Banho/Tosa
+app.post("/user/agendar/banhoetosa", banhotosaController.store);
+app.get("/user/agendar/banhoetosa", banhotosaController.show);
+app.put("/user/agendar/banhoetosa", banhotosaController.update);
+app.delete("/user/agendar/banhoetosa/:id", banhotosaController.destroy);
+
+//rota para Agendar Consulta/Vacina
+app.post("/user/agendar/consultaevacina", consultavacinaController.store);
+app.get("/user/agendar/consultaevacina", consultavacinaController.show);
+app.put("/user/agendar/consultaevacina", consultavacinaController.update);
+app.delete("/user/agendar/consultaevacina/:id", consultavacinaController.destroy);
 
 /* ----------- Produtos -----------*/
 /* Cadastro de Produtos */
@@ -61,12 +94,12 @@ app.put("/servico/:id", servicoController.updateServico);
 app.get("/servico/buscarservico/", servicoController.indexServico);
 
 // Filtro Duplo - Serviços
-/* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&?tipoServico=cachorro*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&?tipoServico=cachorro*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&?tipoServico=cachorro*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&?tipoServico=gato*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&?tipoServico=gato*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&?tipoServico=gato*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&tipoServico=cachorro*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&tipoServico=cachorro*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&tipoServico=cachorro*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&tipoServico=gato*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&tipoServico=gato*/
+/* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&tipoServico=gato*/
 app.get("/servico/buscarservico-duplo", servicoController.indexServicoDuplo);
 
 /* Apresentação */
