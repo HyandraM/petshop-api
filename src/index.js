@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const userController = require("./controller/userController");
-const enderecoController = require("./controller/EnderecoController");
+const enderecoController = require("./controller/enderecoController");
 const produtoController = require("./controller/ProdutoController");
 const servicoController = require("./controller/ServicoController");
 const adestrarController = require("./controller/adestrarController");
@@ -21,7 +21,7 @@ app.get("/user", userController.show);
 app.put("/user/:id", userController.update);
 app.delete("/user/:id", userController.destroy);
 
-//filtro - user 
+//filtro - user
 app.get("/user/id", userController.indexUserId);
 app.get("/user/email", userController.indexUserEmail);
 app.get("/user/telefone", userController.indexUserTelefone);
@@ -55,7 +55,10 @@ app.delete("/user/agendar/banhoetosa/:id", banhotosaController.destroy);
 app.post("/user/agendar/consultaevacina", consultavacinaController.store);
 app.get("/user/agendar/consultaevacina", consultavacinaController.show);
 app.put("/user/agendar/consultaevacina", consultavacinaController.update);
-app.delete("/user/agendar/consultaevacina/:id", consultavacinaController.destroy);
+app.delete(
+     "/user/agendar/consultaevacina/:id",
+     consultavacinaController.destroy,
+);
 
 /* ----------- Produtos -----------*/
 /* Cadastro de Produtos */
@@ -93,20 +96,11 @@ app.put("/servico/:id", servicoController.updateServico);
 /* URL = /servico/buscarservico/?categoriaServico=adestramento*/
 app.get("/servico/buscarservico/", servicoController.indexServico);
 
-// Filtro Duplo - Serviços
-/* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&tipoServico=cachorro*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&tipoServico=cachorro*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&tipoServico=cachorro*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=vacinacao&tipoServico=gato*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=banho_tosa&tipoServico=gato*/
-/* URL = /servico/buscarservico-duplo?categoriaServico=adestramento&tipoServico=gato*/
-app.get("/servico/buscarservico-duplo", servicoController.indexServicoDuplo);
 
 /* Apresentação */
 app.get("/", (req, res) => {
      res.send("Apresentacao Loja");
 });
-
 
 app.listen(port, () => {
      mongoose.connect(
