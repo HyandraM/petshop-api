@@ -56,11 +56,7 @@ app.get("/user", userController.show);
 app.put("/user/:id", userController.update);
 app.delete("/user/:id", userController.destroy);
 
-<<<<<<< HEAD
 //Filtros para usuário
-=======
-//filtro - user
->>>>>>> ef29b366a96d95ef4a537b2fa2e3ae8c2dd03c0b
 app.get("/user/id", userController.indexUserId);
 app.get("/user/email", userController.indexUserEmail);
 app.get("/user/telefone", userController.indexUserTelefone);
@@ -93,16 +89,8 @@ app.delete("/user/agendar/banhoetosa/:id", banhotosaController.destroy);
 //Rotas para agendar consulta e vacina
 app.post("/user/agendar/consultaevacina", consultavacinaController.store);
 app.get("/user/agendar/consultaevacina", consultavacinaController.show);
-<<<<<<< HEAD
 app.put("/user/agendar/consultaevacina/:id", consultavacinaController.update);
 app.delete("/user/agendar/consultaevacina/:id", consultavacinaController.destroy);
-=======
-app.put("/user/agendar/consultaevacina", consultavacinaController.update);
-app.delete(
-     "/user/agendar/consultaevacina/:id",
-     consultavacinaController.destroy,
-);
->>>>>>> ef29b366a96d95ef4a537b2fa2e3ae8c2dd03c0b
 
 //Cadastro de produtos
 app.post("/produto", produtoController.storeProduto);
@@ -143,17 +131,11 @@ app.get("/servico/buscarservico-duplo", servicoController.indexServicoDuplo);
 /* URL = /servico/buscarservico/?categoriaServico=banho_tosa*/
 /* URL = /servico/buscarservico/?categoriaServico=adestramento*/
 
-<<<<<<< HEAD
 //Página de apresentação
-=======
-
-/* Apresentação */
->>>>>>> ef29b366a96d95ef4a537b2fa2e3ae8c2dd03c0b
 app.get("/", (req, res) => {
     res.send("Apresentacao Loja");
 });
 
-<<<<<<< HEAD
 //rotas para catálogo
 app.post("/catalogo", catalogoController.store);
 app.get("/catalogo", catalogoController.show);
@@ -181,8 +163,6 @@ app.get("/servico/adestramento", (req, res) => {
      res.send("informações sobre sobre o serviço de consulta e vacinação");
  });
 
-=======
->>>>>>> ef29b366a96d95ef4a537b2fa2e3ae8c2dd03c0b
 app.listen(port, () => {
      mongoose.connect(
           "mongodb+srv://Hyandra:123456oi@ifpets.aglme.mongodb.net/?retryWrites=true&w=majority&appName=IfPets",
