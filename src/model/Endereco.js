@@ -10,6 +10,7 @@ const enderecoSchema = new Schema({
         },
         estado:  String,
         cep : String,
+        bairro : String,
         cidade : String,
         complemento : String, 
     },    

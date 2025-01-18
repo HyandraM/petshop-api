@@ -1,0 +1,24 @@
+const Pedido = require('../model/Pedido');
+
+module.exports = {
+    // listar todos 
+    async show(req, res) {
+        let pedido = await Pedido.find();
+        return res.json(pedido);
+    },
+    // adicionar
+    async store(req, res) {
+        const pedido = await Pedido.create(req.body);
+        return res.send(pedido);
+    },
+    // atualizar
+    async update(req, res) {
+        let pedido = await Pedido.findByIdAndUpdate(req.params.id, req.body, {new:true}); 
+        return res.send(pedido);
+    },
+    // deletar
+    async destroy(req, res) {
+        let pedido = await Pedido.findByIdAndDelete(req.params.id);
+        return res.send(pedido);
+    }
+};

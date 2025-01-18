@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const{ Schema } = mongoose;
 
 const agendarSchema = new Schema({
+        _idServico: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "CategoriaServico", 
+                required: true
+        },
         tipoAnimal: {
             type : String,
             enum : ['gato', 'cachorro'],

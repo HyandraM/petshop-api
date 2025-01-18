@@ -18,5 +18,5 @@ const pedidoSchema = new Schema({
         lucro : Number, 
     },    
 );
-const Pedido = mongoose.model('Pedido', packageedidoSchema);
+const Pedido = mongoose.model('Pedido', pedidoSchema);
 module.exports = Pedido;
