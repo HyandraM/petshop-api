@@ -10,6 +10,7 @@ const catalogoSchema = new Schema({
     nome: String,
     valor : Number,
     descricao : String,
+    imagem : String,
     favorito : Boolean,
     addCarrinho : Boolean
     

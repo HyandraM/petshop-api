@@ -5,9 +5,24 @@ const SacolaCompras = require('../model/SacolaCompra');
 module.exports = {
     // listar todos 
     async show(req, res) {
-        const produtos = await Catalogo.find();
-        return res.json(produtos);
-    },
+        try {
+            const { search } = req.query; // Captura o parâmetro de busca
+    
+            let produtos;
+            if (search) {
+                produtos = await Catalogo.find({
+                    nome: { $regex: search, $options: 'i' }, // Filtra pelo nome do produto, ignorando maiúsculas/minúsculas
+                });
+            } else {
+                produtos = await Catalogo.find(); // Se não houver busca, retorna todos os produtos
+            }
+    
+            return res.json(produtos);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'Erro ao buscar produtos' });
+        }
+    },    
 
     // adicionar 
     async store(req, res) {

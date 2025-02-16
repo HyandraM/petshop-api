@@ -18,7 +18,15 @@ const favoritoController = require("./controller/favoritoController");
 
 const app = express();
 const port = 3000;
+const path = require('path');
+
 app.use(express.json());
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+//para ver a imagem
+//http://localhost:3000/uploads/Captura_de_tela_2024-11-06_164210-removebg-preview.png
+
 
 //Rotas para finalizar compra 
 app.post("/compra/finalizar", finalizarCompraController.store);
@@ -141,6 +149,8 @@ app.post("/catalogo", catalogoController.store);
 app.get("/catalogo", catalogoController.show);
 app.delete("/catalogo/:id", catalogoController.destroy);
 app.put("/catalogo/:id", catalogoController.update);
+//para buscar por nome 
+//http://localhost:3000/catalogo?search=magus
 
 //rota para favorito
 app.get("/favoritos", favoritoController.show);

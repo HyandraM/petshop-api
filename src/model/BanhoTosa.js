@@ -3,12 +3,10 @@ const Agendar = require('./Agendar');
 const { Schema } = mongoose;
 
 const banhoTosaSchema = new Schema({
-    servico: {
-        type: String,
-        enum : ['banho', 'tosa', 'banho e tosa'],
-        required: true
-    },
-});
+    
+       servico: String
+        
+     });
 
 banhoTosaSchema.add(Agendar.schema.obj);
 
