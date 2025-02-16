@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const mongoose = require("mongoose");
 const userController = require("./controller/userController");
 const enderecoController = require("./controller/enderecoController");
@@ -18,6 +19,7 @@ const favoritoController = require("./controller/favoritoController");
 
 const app = express();
 const port = 3000;
+app.use(cors());
 const path = require('path');
 
 app.use(express.json());
