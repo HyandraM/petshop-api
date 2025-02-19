@@ -1,5 +1,7 @@
-const express = require("express");
 require('dotenv').config();
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
+
+const express = require("express");
 const cors = require('cors');
 const mongoose = require("mongoose");
 const userController = require("./controller/userController");
@@ -177,7 +179,13 @@ app.get("/servico/adestramento", (req, res) => {
  });
 
  app.listen(port, () => {
-    mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-         .then(() => console.log("Conectado ao MongoDB e servidor"))
-         .catch((err) => console.error("Erro ao conectar ao MongoDB: ", err));
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
+        console.error("Erro: A variável de ambiente MONGODB_URI não está definida.");
+        process.exit(1); // Encerra o processo com erro
+    }
+
+    mongoose.connect(mongoUri)
+        .then(() => console.log("Conectado ao MongoDB e servidor"))
+        .catch((err) => console.error("Erro ao conectar ao MongoDB: ", err));
 });
