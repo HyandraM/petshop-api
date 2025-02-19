@@ -1,4 +1,4 @@
-const CatProduto = require('../model/categoriaProduto');
+const CatProduto = require('../model/CategoriaProduto');
 
 module.exports = {
     // listar todos 
