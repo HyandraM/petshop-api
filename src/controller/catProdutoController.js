@@ -1,4 +1,5 @@
 const CatProduto = require('../model/categoriaProduto');
+console.log("CatProduto module loaded successfully.");
 
 module.exports = {
     // listar todos 
@@ -22,3 +23,4 @@ module.exports = {
         return res.send(catProduto);
     }
 };
+console.log("ProdutoController started successfully.");
