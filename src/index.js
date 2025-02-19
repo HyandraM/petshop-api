@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const cors = require('cors');
 const mongoose = require("mongoose");
 const userController = require("./controller/userController");
@@ -18,7 +19,7 @@ const sacolaCompraController = require("./controller/sacolaCompraController");
 const favoritoController = require("./controller/favoritoController");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000
 app.use(cors());
 const path = require('path');
 
@@ -152,7 +153,7 @@ app.get("/catalogo", catalogoController.show);
 app.delete("/catalogo/:id", catalogoController.destroy);
 app.put("/catalogo/:id", catalogoController.update);
 //para buscar por nome 
-//http://localhost:3000/catalogo?search=magus
+//http://localhost:3000
 
 //rota para favorito
 app.get("/favoritos", favoritoController.show);
@@ -175,9 +176,8 @@ app.get("/servico/adestramento", (req, res) => {
      res.send("informações sobre sobre o serviço de consulta e vacinação");
  });
 
-app.listen(port, () => {
-     mongoose.connect(
-          "mongodb+srv://Hyandra:123456oi@ifpets.aglme.mongodb.net/?retryWrites=true&w=majority&appName=IfPets",
-     );
-     console.log("Conectado ao MongoDB e servidor");
+ app.listen(port, () => {
+    mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+         .then(() => console.log("Conectado ao MongoDB e servidor"))
+         .catch((err) => console.error("Erro ao conectar ao MongoDB: ", err));
 });
